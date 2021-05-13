@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'first-angular-project';
-  name= "Myname";
+  name= "Atakan";
+  DoList= [
+    {description:"Breakfast",Action:"No"},
+    {description:"Sport",Action:"No"},
+    {description:"Study",Action:"No"},
+    {description:"Pay the bills",Action:"No"}
+  ]
 }
