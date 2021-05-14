@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-      <h3 class="bg-primary text-white p3">[{{name}}] To Do List</h3>
+      <h3 class="bg-primary text-white p3">[{{getName}}] To Do List</h3>
         
       <div class="input-group">
         <input type="text" class="form-control">
@@ -13,14 +13,20 @@
         <thead>
   
           <tr>
+            <th></th>
             <th>Description</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of DoList">
+            <tr *ngFor="let item of getItem(); let i=index;">
+              <td>{{i+1}}</td>
                 <td>{{item.description}}</td>
-                <td>{{item.Action}}</td>
+                <td> <input type="checkbox" [(ngModel)]="item.Action">  </td>
+                <td><div [ngSwitch]="item.Action">
+                  <div *ngSwitchCase="true">Yes</div>
+                  <div *ngSwitchDefault>No</div>
+                </div></td>
               </tr>
               
             
