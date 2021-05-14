@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Model, ToDo } from './model';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,33 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'first-angular-project';
-  name= "Atakan";
-  DoList= [
-    {description:"Breakfast",Action:"No"},
-    {description:"Sport",Action:"No"},
-    {description:"Study",Action:"No"},
-    {description:"Pay the bills",Action:"No"}
-  ]
+  isDisplay=false;
+  model =new Model;
+
+  getName(){
+
+      return this.model.name;
+  }
+
+  getItem()
+  {   if(this.isDisplay==true)
+    {
+      return this.model.DoList;
+    }
+    return this.model.DoList.filter(i=> !i.Action);
+  }
+  AddItem(data){
+   
+    if(data!="")
+    {
+      let todo= new ToDo(data,false);
+
+      this.model.DoList.push(todo);
+  
+    }
+    else{
+    alert("this area is required!");
+    }
+    
+  }
 }
